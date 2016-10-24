@@ -1,11 +1,13 @@
-var words = [];
-var totals = [];
-var punctuation = [".", ",", "?", "!", ";", ":", "-", "_", '"', "/"];
+var words;
+var totals;
+var punctuation = [".", ",", "?", "!", ";", ":", "-", "_", '"', "/", "(", ")"];
 var sentence;
 var tempWord;
 
 $(document).ready(function(){
   $("form").submit(function(event) {
+    words = [];
+    totals = [];
     var wordIndex = -1;
     var wordCount = 1;
     sentence = $("#input").val().split(" ");
@@ -31,6 +33,8 @@ $(document).ready(function(){
         totals.push(wordCount);
       };
     });
+
+    $("ul").text("");
 
     words.forEach(function(word) {
       $("ul").append("<li>" + word + " " + totals[words.indexOf(word)] + "</li>")
